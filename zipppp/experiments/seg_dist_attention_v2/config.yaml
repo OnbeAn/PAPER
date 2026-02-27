@@ -1,0 +1,63 @@
+data:
+  n_directions: 72
+  processed_dir: /home/agr/DUOFENZHI_gujia/data/processed/
+  random_seed: 42
+  raw_image_dir: /data/agr/nnUNet/nnUNetFrame/DATASET/nnUNet_raw/Dataset601_xiangliang/imagesTr
+  raw_label_dir: /data/agr/nnUNet/nnUNetFrame/DATASET/nnUNet_raw/Dataset601_xiangliang/labelsTr
+  raw_skeleton_dir: /data/agr/nnUNet/nnUNetFrame/DATASET/nnUNet_raw/Dataset601_xiangliang/labelsTr_ske
+  train_cases: 34
+  val_cases: 8
+gpu:
+  device_id: 0
+  use_gpu: true
+gt_generation:
+  branch_dilate_radius: 2
+  pca_window: 3
+logging:
+  log_dir: /home/agr/DUOFENZHI_gujia/logs
+  log_interval: 1
+  save_train_log: true
+  tensorboard_dir: /home/agr/DUOFENZHI_gujia/runs
+loss_weights:
+  cldice: 0.0
+  dist: 0.5
+  flow: 0.0
+  seg_ce: 1.0
+  seg_dice: 1.0
+consistency_weights:
+  seg_dist_boundary: 0.1
+  dist_gradient: 0.05
+  seg_dist_smooth: 0.05
+model:
+  base_channels: 32
+  num_flow_classes: 38
+  num_stages: 5
+paths:
+  experiments_dir: /home/agr/DUOFENZHI_gujia/experiments
+  processed_dir: /home/agr/DUOFENZHI_gujia/data/processed/
+pretrain:
+  checkpoint_path: /data/agr/nnUNet/nnUNetFrame/DATASET/nnUNet_results/Dataset511_Vessel74/nnUNetTrainer__nnUNetPlans__3d_fullres/fold_0/checkpoint_best.pth
+  freeze_encoder: true
+skeleton_extraction:
+  angle_threshold: 30.0
+  connect_gaps: true
+  max_gap: 20
+  min_distance: 1.0
+  path_validity_threshold: 0.5
+  seg_threshold: 0.5
+training:
+  batch_size: 2
+  encoder_lr_ratio: 0.1
+  learning_rate: 0.0001
+  max_epochs: 200
+  num_samples_per_volume: 4
+  num_workers: 4
+  patch_size:
+  - 128
+  - 128
+  - 128
+  save_interval: 10
+  stage1_epochs: 150
+  stage2_epochs: 50
+  use_amp: true
+  val_interval: 1
